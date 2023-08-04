@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('desc');
-            $table->integer('view');
-            $table->integer('like');
+            $table->integer('view')->nullable();
+            $table->integer('like')->nullable();
             $table->foreignId('category_id')
                 ->constrained()
                 ->onDelete('cascade');

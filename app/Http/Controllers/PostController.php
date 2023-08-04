@@ -30,7 +30,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required|string',
+            'desc'=>'required|string',
+        ]);
+        Category::create($request->all());
+        return redirect()->route('category.index')->with('success','date created');
     }
 
     /**
