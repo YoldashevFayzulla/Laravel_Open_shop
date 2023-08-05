@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
 
 
-                    <button class="btn btn-outline-success m-3"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+                    <button class="btn btn-outline-primary m-3"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
                         <svg xmlns="http://www.w3.org/2000/svg" width="29" height="20" fill="currentColor"
                              class="bi bi-plus-lg" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
@@ -61,7 +61,7 @@
                                     <div class="d-flex justify-content-center">
 
 
-                                        <button class="btn btn-outline-success m-3"  data-bs-toggle="modal" data-bs-target="#exampleModaledit{{$category->id}}" data-bs-whatever="@mdo">
+                                        <button class="btn btn-outline-warning m-3"   data-bs-toggle="modal" data-bs-target="#exampleModaledit{{$category->id}}" data-bs-whatever="@mdo">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                  fill="currentColor"
                                                  class="bi bi-pencil-fill" viewBox="0 0 16 16">
@@ -102,7 +102,7 @@
                                               onsubmit="return confirm('are you sure for deleting ');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" style="" class="btn-outline-danger btn m-2">
+                                            <button type="submit"    class="btn-outline-danger btn m-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                      fill="currentColor"
                                                      class="bi bi-trash-fill" viewBox="0 0 16 16">
