@@ -25,9 +25,7 @@ Route::get('/', function () {
 
 
 
-Route::get('/dashboard', function () {
-    return view('admin.category.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [CategoryController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 //admin panel
 Route::middleware('auth')->group(function () {

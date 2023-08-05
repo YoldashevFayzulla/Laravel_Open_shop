@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -13,8 +14,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts=Post::all();
-    return view('admin.post.index',compact('posts'));
+
+        $posts = Post::all();
+        $categories = Category::all();
+        return view('admin.post.index', compact('posts', 'categories'));
     }
 
     /**
@@ -30,12 +33,29 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
+//        dd($request->image);
         $request->validate([
-            'name'=>'required|string',
-            'desc'=>'required|string',
+            'name' => 'required|string',
+            'desc' => 'required|string',
+            'thumbnail' => 'required|file'
         ]);
-        Category::create($request->all());
-        return redirect()->route('category.index')->with('success','date created');
+        if ($request->hasFile('thumbnail')) {
+            $name = $request->file('thumbnail')->getClientOriginalName();
+            $path = $request->file('thumbnail')->storeAs('photo', $name);
+        }
+
+        $post = Post::create([
+//            dd($request),
+            'name' => $request->name,
+            'desc' => $request->desc,
+            'category_id' => $request->category_id,
+            'image' => $path
+        ]);
+
+
+        return redirect()->route('post.index')->with('success', 'created');
+
     }
 
     /**
@@ -59,7 +79,34 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+
+//        dd($request);
+
+        $request->validate([
+            'name' => 'required|string',
+            'desc' => 'required|string',
+        ]);
+
+        if ($request->hasFile('thumbnail')) {
+            Storage::delete($post->image);
+
+
+            $name = $request->file('thumbnail')->getClientOriginalName();
+            $path = $request->file('thumbnail')->storeAs('photo', $name);
+
+        }
+
+
+
+        $post->update([
+            'name'=>$request->name,
+            'desc'=>$request->desc,
+            'category_id'=>$request->category_id,
+            'image'=>$path ?? $post->image,
+        ]);
+
+
+        return redirect()->route('post.index')->with('success', 'Edited');
     }
 
     /**
@@ -67,6 +114,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if (isset($post->image)){
+            Storage::delete(($post->image));
+        }
+
+        $post->delete();
+        return redirect()->back()->with('success','deleted');
     }
 }

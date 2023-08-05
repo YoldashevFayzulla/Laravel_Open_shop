@@ -18,6 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
@@ -37,5 +38,15 @@
         {{ $slot }}
     </main>
 </div>
+<script>
+    @if(session('success'))
+    Swal.fire({
+        icon: 'success',
+        title: '{{session('success')}}',
+        showConfirmButton: false,
+        timer: 1500
+    })
+    @endif
+</script>
 </body>
 </html>

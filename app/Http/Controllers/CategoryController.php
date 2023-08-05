@@ -33,7 +33,7 @@ class CategoryController extends Controller
             'name'=>'required|string'
         ]);
         Category::create($request->all());
-        return redirect()->route('category.index')->with('success','date created');
+        return redirect()->route('category.index')->with('success','Created!');
     }
 
     /**
@@ -57,7 +57,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+
+        $request->validate([
+            'name'=>'string|required',
+        ]);
+
+        $category->update($request->all());
+        return redirect()->route('category.index')->with('success','Updated');
     }
 
     /**
@@ -65,6 +71,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->back()->with('success','Deleted!');
     }
 }
