@@ -68,7 +68,7 @@ class CategoryController extends Controller
         Contact::create([
             'name'=>$request->name,
             'question'=>$request->question,
-            'status'=>3,
+            'status'=>0,
             'post_id'=>$id
         ]);
         return redirect()->back();

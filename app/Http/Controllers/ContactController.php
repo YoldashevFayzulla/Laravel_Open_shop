@@ -64,8 +64,6 @@ class ContactController extends Controller
             'answer_id'=>$contact-> id,
             'status'=>1
         ]);
-        $contact->status=1;
-        $contact->save();
         return redirect()->back()->with('success' ,'Answered' );
     }
 

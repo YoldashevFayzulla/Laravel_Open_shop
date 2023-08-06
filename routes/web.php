@@ -22,6 +22,7 @@ Route::get('/',[ExtraController::class,'index'])->name('welcome');
 Route::get('/catalog',[ExtraController::class,'catalog'])->name('catalog');
 Route::get('/like/{id}',[ExtraController::class,'like'])->name('like');
 Route::get('/post/{id}',[ExtraController::class,'show'])->name('view');
+Route::get('/answer/{id}',[ExtraController::class,'answer'])->name('answer');
 
 
 

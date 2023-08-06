@@ -2,7 +2,6 @@
 @section('content')
     {{--    @dd($post)--}}
 
-
     <h1 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white text-center">{{$post->name}}</h1>
 
     <div class="d-flex">
@@ -32,14 +31,27 @@
         style="margin: 10px">
         {{$post->desc}}
     </h2>
+    <hr>
+    <br>
+    @foreach($messages as $messege)
+        {{$loop->index+1}} {{ $messege->name}}
+        <br>
+        {{$messege->question}}
+        <br>
+        <hr>
+
+    @endforeach
+    <hr>
+    <br>
+
 
     <form action="{{route('category.update',$post->id)}}" method="post">
         @csrf
         @method('PUT')
-        <input type="text" name="name" class="form-control" placeholder="question`s name" id="">
-        <input type="text" name="question" placeholder="describe your question" id="">
+        <input type="text" name="name" class="form-control" placeholder="question`s name" required id="">
+        <input type="text" name="question" placeholder="describe your question" required id="">
 
-        <button type="submit" class="btn btn-outline-warning "> send</button>
+        <button type="submit" class="btn btn-outline-warning">send</button>
 
     </form>
 

@@ -36,7 +36,11 @@ class ExtraController extends Controller
         $post=Post::find($post);
         $post->view++;
         $post->save();
-//        dd($post);
-        return view('post_show', compact('post'));
+        $messages=Contact::where('status','!=',2)->get();
+
+        return view('post_show', compact('post','messages'));
+    }
+    public function answer(){
+        dd('salom');
     }
 }
