@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[ExtraController::class,'index'])->name('welcome');
+Route::get('/catalog',[ExtraController::class,'catalog'])->name('catalog');
+Route::get('/like/{id}',[ExtraController::class,'like'])->name('like');
+
 
 
 

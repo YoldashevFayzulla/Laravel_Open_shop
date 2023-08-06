@@ -43,14 +43,14 @@
                                             <input type="text" class="form-control" name="desc" id="recipient-name">
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label for="recipient-name" class="col-form-label">post`s category:</label>
-                                            <select class="form-control" name="category_id" id="recipient-name">
-                                                @foreach($categories as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+{{--                                        <div class="mb-3">--}}
+{{--                                            <label for="recipient-name" class="col-form-label">post`s category:</label>--}}
+{{--                                            <select class="form-control" name="category_id" id="recipient-name">--}}
+{{--                                                @foreach($categories as $category)--}}
+{{--                                                    <option value="{{$category->id}}">{{$category->name}}</option>--}}
+{{--                                                @endforeach--}}
+{{--                                            </select>--}}
+{{--                                        </div>--}}
 
                                         <div class="mb-3">
                                             <label for="recipient-name" class="col-form-label">post`s image:</label>
@@ -77,7 +77,6 @@
                         <tr>
                             <th>id</th>
                             <th>name</th>
-                            <th>category</th>
                             <th>image</th>
                             <th class="text-center">action</th>
                         </tr>
@@ -85,7 +84,6 @@
                             <tr>
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$post->name}}</td>
-                                <td>{{$post->category->name}}</td>
                                 <td><img src="storage/{{$post->image}}" width="90px"></td>
                                 <td>
                                     <div class="d-flex justify-content-center">
@@ -131,16 +129,16 @@
                                                                        value="{{$post->desc}}" id="recipient-name">
                                                             </div>
 
-                                                            <div class="mb-3">
-                                                                <label for="recipient-name" class="col-form-label">post`s
-                                                                    category:</label>
-                                                                <select class="form-control" name="category_id"
-                                                                        id="recipient-name">
-                                                                    @foreach($categories as $category)
-                                                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
+{{--                                                            <div class="mb-3">--}}
+{{--                                                                <label for="recipient-name" class="col-form-label">post`s--}}
+{{--                                                                    category:</label>--}}
+{{--                                                                <select class="form-control" name="category_id"--}}
+{{--                                                                        id="recipient-name">--}}
+{{--                                                                    @foreach($categories as $category)--}}
+{{--                                                                        <option value="{{$category->id}}">{{$category->name}}</option>--}}
+{{--                                                                    @endforeach--}}
+{{--                                                                </select>--}}
+{{--                                                            </div>--}}
 
                                                             <div class="mb-3">
                                                                 <label for="recipient-name" class="col-form-label">post`s

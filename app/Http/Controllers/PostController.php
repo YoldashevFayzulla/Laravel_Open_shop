@@ -15,7 +15,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::all();
+        $posts = Post::latest()->get();
         $categories = Category::all();
         return view('admin.post.index', compact('posts', 'categories'));
     }
@@ -49,7 +49,7 @@ class PostController extends Controller
 //            dd($request),
             'name' => $request->name,
             'desc' => $request->desc,
-            'category_id' => $request->category_id,
+//            'category_id' => $request->category_id,
             'image' => $path
         ]);
 
@@ -63,7 +63,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $post->view++ ;
+        $post->save();
+//        dd($post);
+        return view('post_show',compact('post') );
     }
 
     /**
@@ -101,7 +104,7 @@ class PostController extends Controller
         $post->update([
             'name'=>$request->name,
             'desc'=>$request->desc,
-            'category_id'=>$request->category_id,
+//            'category_id'=>$request->category_id,
             'image'=>$path ?? $post->image,
         ]);
 
