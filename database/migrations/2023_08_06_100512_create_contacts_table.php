@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('question');
             $table->tinyInteger('post_id')->nullable();
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }
