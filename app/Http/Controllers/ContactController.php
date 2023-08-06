@@ -12,7 +12,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts=Contact::where('status','0')->get();
+        return view('admin.contact.question',compact('contacts'));
     }
 
     /**
@@ -20,7 +21,8 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        $contacts=Contact::where('status','!=','0')->get();
+        return view('admin.contact.answer',compact('contacts'));
     }
 
     /**
@@ -28,7 +30,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -36,7 +38,11 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+
+        $contact->status = 1;
+        $contact->save();
+        return redirect()->back()->with('success','answer added');
+
     }
 
     /**
@@ -44,7 +50,6 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
     }
 
     /**
@@ -52,7 +57,16 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        Contact::create([
+            'name'=>'Answer to '.$contact->name,
+            'question'=>$request->answer,
+            'post_id'=>$contact->post_id,
+            'answer_id'=>$contact-> id,
+            'status'=>1
+        ]);
+        $contact->status=1;
+        $contact->save();
+        return redirect()->back()->with('success' ,'Answered' );
     }
 
     /**
@@ -60,6 +74,7 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        return redirect()->back()->with('success','deleted');
     }
 }

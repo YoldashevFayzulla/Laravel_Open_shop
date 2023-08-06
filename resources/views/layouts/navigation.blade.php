@@ -18,6 +18,12 @@
                     <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
                         {{ __('Posts') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('contact.create')" :active="request()->routeIs('contact.create')">
+                        {{ __('Answers') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.index')">
+                        {{ __('Questions') }}
+                    </x-nav-link>
                 </div>
             </div>
 

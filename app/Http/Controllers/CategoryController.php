@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -55,15 +56,22 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-
-        $request->validate([
-            'name'=>'string|required',
+//
+//        $request->validate([
+//            'name'=>'string|required',
+//        ]);
+//
+//        $category->update($request->all());
+//        return redirect()->route('category.index')->with('success','Updated');
+        Contact::create([
+            'name'=>$request->name,
+            'question'=>$request->question,
+            'status'=>3,
+            'post_id'=>$id
         ]);
-
-        $category->update($request->all());
-        return redirect()->route('category.index')->with('success','Updated');
+        return redirect()->back();
     }
 
     /**

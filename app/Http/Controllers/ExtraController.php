@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -23,5 +24,9 @@ class ExtraController extends Controller
         $post->like++;
         $post->save();
         return redirect()->back();
+    }
+
+    public function create(Request $request ,$id){
+
     }
 }
