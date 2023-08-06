@@ -63,10 +63,6 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $post->view++ ;
-        $post->save();
-//        dd($post);
-        return view('post_show',compact('post') );
     }
 
     /**
